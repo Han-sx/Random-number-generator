@@ -20,6 +20,9 @@ Based on blockchain and cryptography, generate verifiable random numbers
 > 完成最终随机后可将所有质押金额均分给参与用户
 
 ### 合约函数
+
 `random_requests()`：用于接受随机请求，请求者需要提供小份gas，返回随机结果
+
 `participate_in_random_1(random_number_sha)`：第一阶段提供随机数散列，并附带质押gas
+
 `participate_in_random_2(random_number)`：第二阶段提供随机数
