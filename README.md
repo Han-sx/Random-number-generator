@@ -2,7 +2,7 @@
 Based on blockchain and cryptography, generate verifiable random numbers
 
 
-# 基本思路
+# List some schemes
 ## 方案一 (https://github.com/randao/randao)
 
 1.利用多方参与：去中心化在于多方参与，多方共同参与生成的随机数可被多方接受和验证
@@ -57,3 +57,61 @@ Based on blockchain and cryptography, generate verifiable random numbers
 
 8.参与者使用私钥和 txid3 检测所有信息真实性
 > 利用给出信息可检测游戏过程
+
+<br>
+
+## 方案三 (How to generate transparent random numbers using blockchain)
+
+> users: U
+
+> service systems: S
+
+> random number generator: G
+
+> blockchain holder: B
+
+U 拥有地址 a，S 拥有地址 b，且 U 知道 S 的地址 b
+
+G 执行的算法对外公开，作为智能合约存在于区块链上，执行两个函数：`Reg(info)` 和 `AskNonce()`，`Reg(info)` 用于将数据信息注入区块链，`AskNonce()` 用于向 B 获取下个块的随机数
+
+在此系统中 G 和 B 是可信的，G 为智能合约，B 为区块链
+
+当只有一个参与者和一个生成者的时候，选取区块链的 next nonce 是合理的，若需求为两个随机数时，这种方案效率较低
+
+### The processes of the proposed scheme:
+> (P1) The user registration procedure
+
+> (P2) The service system registraion procedure
+
+> (P3) The lottery procedure
+
+<br>
+
+1.The user U registers his address a and a seed used for computing random numbers, to the blockchain
+> The user U determines a seed r, and sends, to the random number generator G, his address a and the seed r
+
+> G receives a and r from U, and registers those executing `Reg(a, r)`
+
+<br>
+
+2.The service system registers its address b and a seed used for computing random numbers, to the blockchain
+> The service system S determines a seed p, and sends, to the random number generator G, its address b and the seed p.
+
+> G receives b and p from S, and registers those executing `Reg(b, p)`
+
+<br>
+
+3.The user U requests a random number generation, and U and the corresponding service system get the value of the random number generated.
+> The user U sends a request to the random number generator G by sending his address a and the address b of the service system U applies to.
+
+> G makes a (unique) identification number sn (which may be a serial number).
+
+> G finds the latest r in the blockchain which is associated with the address a, and finds the latest p in the blockchain which is associated with the address b. Then G registers sn, a and b executing `Reg(sn, a, b)`
+
+> G executes `AskNonce()` to get the nonce n from B at the timing when the next block is generated
+
+> G computes α = hash(r, p, sn, a, b, n)  eg. α = SHA256(f(r, p, sn, a, b, n))
+
+> G sends, to U and S, sn and α. Here, α is the random number generated for the identification number sn.
+
+> U and S can verify whether the result α is indeed computed using r, p, sn, a, b and n.
