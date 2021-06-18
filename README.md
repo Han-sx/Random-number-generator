@@ -3,7 +3,7 @@ Based on blockchain and cryptography, generate verifiable random numbers
 
 
 # List some schemes
-## 方案一 (https://github.com/randao/randao)
+## 1. [randao](https://github.com/randao/randao)
 
 1.利用多方参与：去中心化在于多方参与，多方共同参与生成的随机数可被多方接受和验证
 > 为了保证随机数不能被少数人控制，多方参与需要基础的人数底线。可通过区块提供奖励等方式鼓励参与随机过程，获取有效随机
@@ -29,7 +29,7 @@ Based on blockchain and cryptography, generate verifiable random numbers
 
 <br>
 
-## 方案二 (A Blockchain-based Random Number Generation Algorithm and the Application in Blockchain Games)
+## 2. [A Blockchain-based Random Number Generation Algorithm and the Application in Blockchain Games](https://ieeexplore.ieee.org/document/8664239)
 
 1.Game provider 生成一个随机数 Np 和 public-private key pair，game provider 使用公钥加密随机数为 E(Np)，将信息 massage:{ E(Np) & GameID } 发送给区块链
 > GameID 为游戏编号
@@ -60,7 +60,7 @@ Based on blockchain and cryptography, generate verifiable random numbers
 
 <br>
 
-## 方案三 (How to generate transparent random numbers using blockchain)
+## 3. [How to generate transparent random numbers using blockchain](https://ieeexplore.ieee.org/document/8664239)
 
 > users: U
 
