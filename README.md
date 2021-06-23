@@ -117,7 +117,7 @@ Based on blockchain and cryptography, generate verifiable random numbers
 > `U` and `S` can verify whether the result `α` is indeed computed using `r`, `p`, `sn`, `a`, `b` and `n`
 
 
-## 4. [Probabilistic Smart Contracts: Secure Randomness on the Blockchain](https://ieeexplore.ieee.org/document/8664239)
+## 4. [Probabilistic Smart Contracts: Secure Randomness on the Blockchain](https://ieeexplore.ieee.org/document/8751326)
 
 1.Step 1: Request. The process of random bit generation always begins with a request from another contract or node. A request is lodged with the RBGC by calling its requestRandom-Bit function, which receives the following parameters:
 
@@ -159,7 +159,7 @@ Based on blockchain and cryptography, generate verifiable random numbers
 
 > If no one has participated or no participant has revealed her bit, a failure result is returned to the client, together with a refund of the fee φ
 
-> Otherwise, the output random bit that is returned to the client is the XOR of all the bits that were correctly revealed by the participants in Step 3
+> Otherwise, the output random bit that is returned to the client is the XOR of all the bits that were correctly revealed by the participants in Step 3
 
 > If every participant has revealed her bit correctly, a success result will be returned to the client
 
