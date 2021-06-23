@@ -155,3 +155,12 @@ Based on blockchain and cryptography, generate verifiable random numbers
 
 > Let α = φ / n , then each participant p receives a reward of rp = α*(1 + up(s) / n') by calling the requestReward function
 
+6.Step 6: Returning the Output. Finally, the client can request her randomly generated bit by calling the getOutput function of the RBGC after the deadline t. In this case, the output random bit and return value are decided as follows:
+
+> If no one has participated or no participant has revealed her bit, a failure result is returned to the client, together with a refund of the fee φ
+
+> Otherwise, the output random bit that is returned to the client is the XOR of all the bits that were correctly revealed by the participants in Step 3
+
+> If every participant has revealed her bit correctly, a success result will be returned to the client
+
+> Otherwise, a penalty result will be returned and the confiscated deposits will be paid to the client
