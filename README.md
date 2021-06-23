@@ -115,3 +115,43 @@ Based on blockchain and cryptography, generate verifiable random numbers
 > `G` sends, to `U` and `S`, `sn` and `α`. Here, `α` is the random number generated for the identification number `sn`
 
 > `U` and `S` can verify whether the result `α` is indeed computed using `r`, `p`, `sn`, `a`, `b` and `n`
+
+
+## 4. [Probabilistic Smart Contracts: Secure Randomness on the Blockchain](https://ieeexplore.ieee.org/document/8664239)
+
+1.Step 1: Request. The process of random bit generation always begins with a request from another contract or node. A request is lodged with the RBGC by calling its requestRandom-Bit function, which receives the following parameters:
+
+> A fee `φ`, serving as a payment for generating the random bit, whose value is chosen and paid by the client.
+
+> A timestamp `t`, also set by the client, that serves as a deadline for the random bit generation process
+
+> A value estimation `v`, which is an upper bound on the potential economic consequences that might arise for the client if the provided bit is manipulated.
+
+> It assigns a request identification number `id` to the request and returns the `id` to the caller of the requestRan-domBit function
+
+2.Step 2: Participant Registration. Whenever there is an open call for participation in generating a random bit with a given `id`, anyone on the network can participate in the process by registering with the RBGC. To register, a participant `p` should generate a random bit `bp`, and a nonce `np`. She should then compute the hash value `hp` = hash(`bp`, `np`, `p`, `id`) using a predefined hash function. Then, she can call the register function of the RBGC with the following parameters:
+
+> The request identification number `id`
+
+> A deposit of `v` units
+
+> The hash value `hp`
+
+3.Step 3: Revealing Choices. In this step, no new registrations are accepted. Instead, any participant who has already registered can reveal their bit bp and nonce np by calling the reveal function of the RBGC with parameters bp and np. If the parameters are invalid, i.e. if hash(bp, np, p, id) is not equal to hp, then the call is ignored. Also, reveal keeps track of the following 5 values:
+
+> `n'`: number of participants `p` who correctly revealed `bp`
+
+> `n0`: number of even-numbered participants `p` with `bp` = 0
+
+> `n1`: number of odd-numbered participants `p` with `bp` = 0
+
+> `n2`: number of even-numbered participants `p` with `bp` = 1
+
+> `n3`: number of odd-numbered participants `p` with `bp` = 1
+
+4.Step 4: Returning Deposits. After the deadline t, each participant can call the returnDeposit function of the RBGC. This function checks that the participant has revealed her choice correctly and in time, and returns the participant’s deposit only if the check passes
+
+5.Step 5: The RBG Game. After the deadline t, each participant can call the requestReward function of the RBGC. This function uses the fee φ, paid by the client, to reward the participants for submitting inputs. The amount φ is distributed among the participants who have correctly revealed their choices in Step 3 as a reward
+
+> Let α = φ / n , then each participant p receives a reward of rp = α*(1 + up(s) / n') by calling the requestReward function
+
