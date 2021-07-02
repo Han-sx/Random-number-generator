@@ -151,7 +151,7 @@ Based on blockchain and cryptography, generate verifiable random numbers
 
 4.Step 4: Returning Deposits. After the deadline t, each participant can call the returnDeposit function of the RBGC. This function checks that the participant has revealed her choice correctly and in time, and returns the participant’s deposit only if the check passes
 
-5.Step 5: The RBG Game. After the deadline t, each participant can call the requestReward function of the RBGC. This function uses the fee φ, paid by the client, to reward the participants for submitting inputs. The amount φ is distributed among the participants who have correctly revealed their choices in Step 3 as a reward
+5.Step 5: The RBG Game. After the deadline t, each participant can call the requestReward function of the RBGC. This function uses the fee φ, paid by the client, to reward the participants for submitting inputs. The amount φ is distributed among the participants who have correctly revealed their choices in Step 3 as a reward:
 
 > Let α = φ / n , then each participant p receives a reward of rp = α*(1 + up(s) / n') by calling the requestReward function
 
