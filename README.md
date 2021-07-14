@@ -29,7 +29,7 @@ Based on blockchain and cryptography, generate verifiable random numbers
 
 <br>
 
-## 2. [A Blockchain-based Random Number Generation Algorithm and the Application in Blockchain Games](https://ieeexplore.ieee.org/document/8664239)
+## 2. [A Blockchain-based Random Number Generation Algorithm and the Application in Blockchain Games](https://ieeexplore.ieee.org/document/8914618)
 
 1.Game provider 生成一个随机数 Np 和 public-private key pair，game provider 使用公钥加密随机数为 E(Np)，将信息 massage:{ E(Np) & GameID } 发送给区块链
 > GameID 为游戏编号
